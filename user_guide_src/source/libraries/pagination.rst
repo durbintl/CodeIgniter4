@@ -61,6 +61,10 @@ It is important to be aware that the library pattern for Next and Previous is di
 
 Next and Previous here is linked to the group of links to be displayed in the pagination structure, and not to the next or previous page of records.
 
+If you prefer that the Next and Previous links behave in the traditional way, you can use the ``regularLinks()`` method. This displays links similar to the ``links()`` method, however the Next and Previous is linked to the page before and after the current page of records, respectively. Within the view, you would use::
+
+    <?= $pager->regularLinks() ?>
+
 If you prefer a simpler output, you can use the ``simpleLinks()`` method, which only uses "Older" and "Newer" links,
 instead of the details pagination links::
 

@@ -58,6 +58,18 @@ interface PagerInterface
 	//--------------------------------------------------------------------
 
 	/**
+	 * Creates traditional full pagination, where Next/Previous links to pages before or after current page.
+	 *
+	 * @param string $group
+	 * @param string $template The output template alias to render.
+	 *
+	 * @return string
+	 */
+	public function regularLinks(string $group = 'default', string $template = 'default'): string;
+
+	//--------------------------------------------------------------------
+
+	/**
 	 * Creates simple Next/Previous links, instead of full pagination.
 	 *
 	 * @param string $group

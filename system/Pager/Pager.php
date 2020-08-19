@@ -124,6 +124,23 @@ class Pager implements PagerInterface
 	//--------------------------------------------------------------------
 
 	/**
+	 * Creates traditional full pagination, where Next/Previous links to pages before or after current page.
+	 *
+	 * @param string $group
+	 * @param string $template
+	 *
+	 * @return string
+	 */
+	public function regularLinks(string $group = 'default', string $template = 'default_regular'): string
+	{
+		$this->ensureGroup($group);
+
+		return $this->displayLinks($group, $template);
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
 	 * Creates simple Next/Previous links, instead of full pagination.
 	 *
 	 * @param string $group

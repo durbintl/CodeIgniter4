@@ -309,15 +309,15 @@ class PagerTest extends \CodeIgniter\Test\CIUnitTestCase
 
 		$this->assertEquals(
 			$this->pager->only($onlyQueries)
-						->getPreviousPageURI(), (string)$uri->setQuery('search=foo&order=asc&page=1')
+				->getPreviousPageURI(), (string)$uri->setQuery('search=foo&order=asc&page=1')
 		);
 		$this->assertEquals(
 			$this->pager->only($onlyQueries)
-						->getNextPageURI(), (string)$uri->setQuery('search=foo&order=asc&page=3')
+				->getNextPageURI(), (string)$uri->setQuery('search=foo&order=asc&page=3')
 		);
 		$this->assertEquals(
 			$this->pager->only($onlyQueries)
-						->getPageURI(4), (string)$uri->setQuery('search=foo&order=asc&page=4')
+				->getPageURI(4), (string)$uri->setQuery('search=foo&order=asc&page=4')
 		);
 	}
 
@@ -338,6 +338,11 @@ class PagerTest extends \CodeIgniter\Test\CIUnitTestCase
 	public function testSimpleLinks()
 	{
 		$this->assertStringContainsString('<ul class="pager">', $this->pager->simpleLinks());
+	}
+
+	public function testRegularLinks()
+	{
+		$this->assertStringContainsString('<ul class="pagination">', $this->pager->regularLinks());
 	}
 
 	public function testMakeLinks()
@@ -374,6 +379,40 @@ class PagerTest extends \CodeIgniter\Test\CIUnitTestCase
 		);
 		$this->assertStringContainsString(
 			'<li class="active">', $this->pager->makeLinks(1, 10, 1, 'default_full', 1)
+		);
+
+		$this->assertStringContainsString(
+			'<ul class="pagination">', $this->pager->makeLinks(3, 10, 50, 'default_regular')
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0)
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, '')
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, 'default')
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0)
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0, '')
+		);
+		$this->assertStringContainsString(
+			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0, 'default')
+		);
+		$this->assertStringContainsString(
+			'?page_custom=1', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, 'custom')
+		);
+		$this->assertStringContainsString(
+			'?page_custom=1', $this->pager->makeLinks(1, null, 1, 'default_regular', 0, 'custom')
+		);
+		$this->assertStringContainsString(
+			'/1', $this->pager->makeLinks(3, 10, 50, 'default_regular', 1)
+		);
+		$this->assertStringContainsString(
+			'<li class="active">', $this->pager->makeLinks(1, 10, 1, 'default_regular', 1)
 		);
 	}
 

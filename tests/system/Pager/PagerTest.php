@@ -382,25 +382,16 @@ class PagerTest extends \CodeIgniter\Test\CIUnitTestCase
 		);
 
 		$this->assertStringContainsString(
-			'<ul class="pagination">', $this->pager->makeLinks(3, 10, 50, 'default_regular')
+			'<ul class="pagination">', $this->pager->makeLinks(4, 10, 50, 'default_regular')
 		);
 		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0)
+			'?page=1', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0)
 		);
 		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, '')
+			'?page=1', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, '')
 		);
 		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, 'default')
-		);
-		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0)
-		);
-		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0, '')
-		);
-		$this->assertStringContainsString(
-			'?page=3', $this->pager->makeLinks(3, 10, 50, 'default_regular', 0, 'default')
+			'?page=1', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, 'default')
 		);
 		$this->assertStringContainsString(
 			'?page_custom=1', $this->pager->makeLinks(1, 10, 1, 'default_regular', 0, 'custom')

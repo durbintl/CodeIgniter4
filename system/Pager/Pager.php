@@ -183,7 +183,7 @@ class Pager implements PagerInterface
 
 	/**
 	 * Does the actual work of displaying the view file. Used internally
-	 * by links(), simpleLinks(), and makeLinks().
+	 * by links(), regularLinks(), simpleLinks(), and makeLinks().
 	 *
 	 * @param string $group
 	 * @param string $template
